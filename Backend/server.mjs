@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import food from "./db/Data/Data.js";
 server.use(cors({ origin: "http://localhost:3001" }));
+import dotenv from 'dotenv';
+dotenv.config();
 
 server.get("/", (req, res) => {
   res.send("Welcome to the database server");
@@ -20,7 +22,7 @@ server.get("/Api/Food", (req, res) => {
 
 mongoose
   .connect(
-    "mongodb+srv://KhaledRestaurant:LodaBey@resturant.lju1e7z.mongodb.net/?retryWrites=true&w=majority&appName=Resturant"
+    process.env.MONGO_API_VERSION
   )
   .then(() => {
     server.listen(port, () => {

@@ -196,7 +196,7 @@ export default function Resturant() {
         direction={"row"}
         justifyContent={"space-around"}
         alignItems={"center"}
-        sx={{ height: "auto", mt: IsScreenLarge? 15 : 10, mr:2 }}
+        sx={{ height: "auto", mt: IsScreenLarge ? 15 : 10, mr: 2 }}
       >
         {IsScreenLarge ? (
           <Box width={"400px"} height={"400px"}>
@@ -207,7 +207,7 @@ export default function Resturant() {
                 borderRadius: "10px",
                 transition: "opacity 1s ease-in-out",
                 opacity: Image ? 1 : 0,
-                marginLeft: "15px"
+                marginLeft: "15px",
               }}
               src={Image}
               alt=""
@@ -215,7 +215,13 @@ export default function Resturant() {
           </Box>
         ) : null}
 
-<Stack width={"50%"} sx={{flexDirection: IsScreenLarge? "row" :"column", justifyContent: "space-around",  }}>
+        <Stack
+          width={"50%"}
+          sx={{
+            flexDirection: IsScreenLarge ? "row" : "column",
+            justifyContent: "space-around",
+          }}
+        >
           <List>
             {cities.map((item) => (
               <ListItem
@@ -243,7 +249,7 @@ export default function Resturant() {
               </ListItem>
             ))}
           </List>
-  
+
           <List>
             {cities2.map((item) => (
               <ListItem
@@ -271,7 +277,7 @@ export default function Resturant() {
               </ListItem>
             ))}
           </List>
-</Stack>
+        </Stack>
 
         {IsScreenLarge ? (
           <Box width={"400px"} height={"400px"}>
@@ -282,7 +288,6 @@ export default function Resturant() {
                 borderRadius: "10px",
                 transition: "opacity 1s ease-in-out",
                 opacity: Image2 ? 1 : 0,
-
               }}
               src={Image2}
               alt=""

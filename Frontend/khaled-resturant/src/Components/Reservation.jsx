@@ -29,7 +29,7 @@ export default function Reservation() {
     right: false,
   });
 
-  const [alignment, setAlignment] = useState("Dishes");
+  const [alignment, setAlignment] = useState("");
   const [InputValue, setInputValue] = useState("");
   const [RadioValue, setRadioValue] = useState(null);
   const [FoodData, setFoodData] = useState([]);
@@ -41,9 +41,10 @@ export default function Reservation() {
   }, []);
 
   //For Buttons in ReservationHero
-  const handleAlignment = (event, newAlignment) => {
-    if (newAlignment !== null) {
-      setAlignment(newAlignment);
+  const handleAlignment = (eo) => {
+    if (eo !== null) {
+      let value = eo.target.value;
+      setAlignment(value);
     }
   };
 
@@ -55,21 +56,35 @@ export default function Reservation() {
 
   //For Selected Ratio in ReservationHero
   const HandleRadioChange = (eo) => {
-    let value = eo.target.value;
-    setRadioValue(value);
+    if (eo !== null) {
+      let value = eo.target.value;
+      setRadioValue(value);
+    }
   };
 
   const FilteredItems = FoodData.filter((item) => {
     return item.name.toLowerCase().indexOf(InputValue.toLowerCase()) !== -1;
   });
 
+  const FiltiringProducts = () => {
+    let Food = FoodData;
 
-const FiltiringProducts = (InputValue) => {
-  let Food = FoodData
+    if (InputValue) {
+      Food = FilteredItems;
+    }
 
-  if (InputValue) {
-    Food = FilteredItems
-  }
+    if (alignment || RadioValue) {
+      Food = Food.filter(
+        ({ city, category, name }) =>
+          city === alignment ||
+          category === alignment ||
+          name === alignment ||
+          city === RadioValue ||
+          category === RadioValue ||
+          name.includes(RadioValue)
+      );
+    }
+
     return Food.map(({ name, category, imageLink, city }) => (
       <CardItem
         city={city}
@@ -79,48 +94,9 @@ const FiltiringProducts = (InputValue) => {
         key={Math.random()}
       />
     ));
-}
+  };
 
-
-
-
-
-
-
-
-
-
-
-  // function filteredData(products, alignment, InputValue) {
-  //   let filteredProducts = products;
-
-  //   // Filtering Input Items
-  //   if (InputValue) {
-  //     filteredProducts = FiltiredData;
-  //   }
-
-  //   // Applying selected filter
-  //   if (alignment) {
-  //     filteredProducts = filteredProducts.filter(
-  //       ({ city, category, name }) =>
-  //         city === alignment ||
-  //         category === alignment ||
-  //         name === alignment
-  //     );
-  //   }
-
-  //   return filteredProducts.map(({ imageLink, name, category, city }) => (
-  //     <CardItem
-  //       imageLink={imageLink}
-  //       name={name}
-  //       category={category}
-  //       city={city}
-  //       key={Math.random()}
-  //     />
-  //   ));
-  // }
-
-  const result = FiltiringProducts(alignment, RadioValue, InputValue);
+  const result = FiltiringProducts();
 
   const IsScreenLarge = useMediaQuery("(min-width:950px)");
   const toggleDrawer = (anchor, open) => (event) => {
@@ -144,62 +120,73 @@ const FiltiringProducts = (InputValue) => {
         position: "relative",
       }}
       role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
-      // onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Stack
-        sx={{
-          bgcolor: "black",
-          color: "white",
-          borderTopRightRadius: "10px",
-          borderBottomRightRadius: "10px",
-        }}
-        width={"230px"}
-        height={"100%"}
-      >
-        <Box my={2}>
-          <Box>
-            <Typography textAlign={"center"} variant="body1" color="inherit">
-              Reserve Your Table <FastfoodIcon />
-            </Typography>
+      {/* Making the side bar for the checkboxes disapearing in the sm sizes devices */}
+      {IsScreenLarge ? (
+        <Stack
+          sx={{
+            bgcolor: "black",
+            color: "white",
+            borderTopRightRadius: "10px",
+            borderBottomRightRadius: "10px",
+          }}
+          width={"250px"}
+          height={"100%"}
+        >
+          <Box my={2}>
+            <Box>
+              <Typography textAlign={"center"} variant="body1" color="inherit">
+                Reserve Your Table <FastfoodIcon />
+              </Typography>
+            </Box>
           </Box>
-        </Box>
 
-        <Divider sx={{ border: "0.5px solid grey", my: 1 }} />
+          <Divider sx={{ border: "0.5px solid grey", my: 1 }} />
 
-        <Box>
-          <h4 style={{ textAlign: "center" }}>Catagory</h4>
+          <Box>
+            <h4 style={{ textAlign: "center" }}>Catagory</h4>
+            <Divider sx={{ border: "0.1px solid grey", my: 3 }} />
 
-          <CheckBox
-            FristName={"Dinner"}
-            SecoundName={"Lanuch"}
-            ThirdName={"Brunch"}
-            CatagoryName={"Meals"}
-            HandleRadioChange={HandleRadioChange}
-          />
-          <CheckBox
-            FristName={"Burger"}
-            SecoundName={"Steak"}
-            ThirdName={"Golden Meat"}
-            CatagoryName={"Dishes"}
-            HandleRadioChange={HandleRadioChange}
-          />
-          <CheckBox
-            FristName={"Ankara"}
-            SecoundName={"NYC"}
-            ThirdName={"Dubai"}
-            CatagoryName={"City"}
-            HandleRadioChange={HandleRadioChange}
-          />
-        </Box>
-      </Stack>
+            <CheckBox
+              FristName={"Dinner"}
+              SecoundName={"Lunch"}
+              ThirdName={"Brunch"}
+              CatagoryName={"Meals"}
+              HandleRadioChange={HandleRadioChange}
+            />
+            <CheckBox
+              FristName={"Burger"}
+              SecoundName={"Steak"}
+              ThirdName={"Bowl"}
+              CatagoryName={"Dishes"}
+              HandleRadioChange={HandleRadioChange}
+            />
+            <CheckBox
+              FristName={"Ankara"}
+              SecoundName={"NYC"}
+              ThirdName={"Dubai"}
+              CatagoryName={"City"}
+              HandleRadioChange={HandleRadioChange}
+            />
+          </Box>
+        </Stack>
+      ) : null}
 
-      <Box sx={{ position: "absolute", left: "40%", mt: 2 }}>
+      {/* The photo and close btn in the small sizes devices */}
+
+      <Box
+        sx={{
+          position: "absolute",
+          transform: "translate(-50%, -50%)",
+          left: "50%",
+          mt: 5,
+        }}
+      >
         <NavLink to="/">
-          {IsScreenLarge ? (
+          {!IsScreenLarge ? (
             <img
               style={{
-                maxWidth: "230px",
+                maxWidth: "150px",
               }}
               src={Logo}
               alt="Logo"
@@ -216,7 +203,6 @@ const FiltiringProducts = (InputValue) => {
       </IconButton>
       <Stack width={"100%"}>
         <ReservationHero
-          alignment={alignment}
           handleAlignment={handleAlignment}
           InputValue={InputValue}
           handlechange={handlechange}

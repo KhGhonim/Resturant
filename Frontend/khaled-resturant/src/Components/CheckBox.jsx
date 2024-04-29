@@ -82,11 +82,9 @@ export default function CheckBox({
       </Typography>
       <FormControl>
       <RadioGroup
-        defaultValue="All Products"
         aria-labelledby="demo-customized-radios"
         name="customized-radios"
       >
-        <FormControlLabel onClick={HandleRadioChange} value="All Products" control={<BpRadio />} label="All Products" />
         <FormControlLabel  onClick={HandleRadioChange} value={FristName} control={<BpRadio />} label={FristName} />
         <FormControlLabel onClick={HandleRadioChange} value={SecoundName} control={<BpRadio />} label={SecoundName} />
         <FormControlLabel  onClick={HandleRadioChange}value={ThirdName} control={<BpRadio />} label={ThirdName} />

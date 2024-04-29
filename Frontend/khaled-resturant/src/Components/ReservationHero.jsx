@@ -6,8 +6,7 @@ import {
   Typography,
   alpha,
   styled,
-  ToggleButtonGroup,
-  ToggleButton,
+  Button,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -53,12 +52,11 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 export default function ReservationHero({
-  alignment,
   handleAlignment,
   InputValue,
   handlechange,
-  
 }) {
+
   return (
     <Container sx={{ mt: 12 }}>
       <Stack
@@ -66,8 +64,10 @@ export default function ReservationHero({
         justifyContent={"space-between"}
         alignItems={"center"}
         gap={3}
+        mb={5}
       >
-        <Typography variant="body1" color="white">
+        
+        <Typography variant="h6" color="white">
           Recomanded
         </Typography>
         <Search onChange={handlechange}>
@@ -78,30 +78,54 @@ export default function ReservationHero({
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
             value={InputValue}
+            
           />
+          
         </Search>
       </Stack>
 
       <Stack gap={2} direction={"row"}>
-        <ToggleButtonGroup
-          value={alignment}
-          exclusive
-          onChange={handleAlignment}
-          aria-label="text alignment"
+
+        <Button
+          sx={{ textTransform: "capitalize" }}
+          onClick={handleAlignment}
+          value={"Ankara"}
+          variant="outlined"
+          color="info"
+          
         >
-          <ToggleButton value="Dishes" color="warning">
-            All Dishes
-          </ToggleButton>
-          <ToggleButton value="Dinner" color="warning">
-            Dinner
-          </ToggleButton>
-          <ToggleButton value="Steak" color="error">
-            Steak
-          </ToggleButton>
-          <ToggleButton value="Ankara" color="success">
           Ankara
-          </ToggleButton>
-        </ToggleButtonGroup>
+        </Button>
+
+        <Button
+          sx={{ textTransform: "capitalize" }}
+          onClick={handleAlignment}
+          value={"Dinner"}
+          variant="outlined"
+          color="primary"
+        >
+          Dinner
+        </Button>
+
+        <Button
+          sx={{ textTransform: "capitalize" }}
+          onClick={handleAlignment}
+          value={"Lunch"}
+          variant="outlined"
+          color="error"
+        >
+          Launch
+        </Button>
+
+        <Button
+          sx={{ textTransform: "capitalize" }}
+          onClick={handleAlignment}
+          value={"Dubai"}
+          variant="outlined"
+          color="secondary"
+        >
+          Dubai
+        </Button>
       </Stack>
       <Divider sx={{ my: 3 }} />
     </Container>
