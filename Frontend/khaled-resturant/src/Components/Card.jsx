@@ -15,22 +15,24 @@ export default function CardItem({ city, imageLink, category, name }) {
 
   return (
     <Card
-      onClick={() => {
-        navigate(`/FoodArticles/${name}`);
-      }}
+
       sx={{
-        maxWidth: 350,
+        maxWidth:350,
         color: "whitesmoke",
         ":hover": { cursor: "pointer" },
+
       }}
+      className="flex justify-between flex-col bg-whitesmoke"
     >
       <CardHeader title={name} subheader={category} />
       <CardMedia
         component="img"
-        height="200"
-        width="200"
+        sx={{objectFit:"cover"}}
         image={imageLink}
         alt={name}
+        onClick={() => {
+          navigate(`/FoodArticles/${name}`);
+        }}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">

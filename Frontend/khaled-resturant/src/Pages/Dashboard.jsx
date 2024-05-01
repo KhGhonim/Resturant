@@ -46,8 +46,8 @@ function Dashboard() {
               sx={{
                 position: "absolute",
                 color: "white",
-                top: { xs: "20%", md: "30%" },
-                left: { xs: "20%", md: "30%" },
+                top: { xs: "30%", md: "35%" },
+                left: { xs: "20%", md: "35%" },
               }}
               className="text"
             >

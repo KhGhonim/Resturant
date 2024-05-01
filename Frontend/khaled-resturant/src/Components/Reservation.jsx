@@ -121,6 +121,8 @@ export default function Reservation() {
       }}
       role="presentation"
     >
+
+
       {/* Making the side bar for the checkboxes disapearing in the sm sizes devices */}
       {IsScreenLarge ? (
         <Stack
