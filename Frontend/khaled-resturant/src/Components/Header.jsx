@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, IconButton, Stack } from "@mui/material";
 import UpperDrawer from "./Menu";
 import Logo from "../Assets/nusret.svg";
 import Reservation from "./Reservation";
@@ -6,10 +6,32 @@ import Resturant from "./Resturant";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useSelector } from "react-redux";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import PopupCart from "./PopupCart";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 
 export default function Header() {
   const IsScreenLarge = useMediaQuery("(min-width:950px)");
   const [Scrolled, setScrolled] = useState("absolute");
+  const [Close, setClose] = useState(false);
+
+  const HandleCartCloser = () => {
+    setClose(!Close);
+  };
+  // @ts-ignore
+  const { SelectedProducts } = useSelector((state) => state.CartShop);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -66,6 +88,27 @@ export default function Header() {
       </Box>
       <Stack alignItems={"center"} direction={"row"} gap={3}>
         <Resturant />
+        {SelectedProducts.length > 0 ? (
+          <div>
+            <IconButton
+              onClick={() => {
+                setClose(!Close);
+              }}
+              aria-label="cart"
+            >
+              <StyledBadge
+                badgeContent={SelectedProducts.length}
+                color="secondary"
+              >
+                <ShoppingCartIcon />
+              </StyledBadge>
+            </IconButton>
+            {Close === true ? (
+              <PopupCart HandleCartCloser={HandleCartCloser} />
+            ) : null}
+          </div>
+        ) : null}
+
         <Reservation />
       </Stack>
     </Box>

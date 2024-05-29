@@ -85,14 +85,14 @@ export default function Reservation() {
       );
     }
 
-    return Food.map(({ name, category, imageLink, city }) => (
+    return Food.map(({ name, category, imageLink, city, id, dishType, Price }) => (
       <CardItem
         city={city}
         imageLink={imageLink}
         category={category}
         name={name}
         key={Math.random()}
-      />
+        id={id} dishType={dishType} Price={Price}     />
     ));
   };
 
@@ -121,8 +121,6 @@ export default function Reservation() {
       }}
       role="presentation"
     >
-
-
       {/* Making the side bar for the checkboxes disapearing in the sm sizes devices */}
       {IsScreenLarge ? (
         <Stack

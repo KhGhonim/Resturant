@@ -20,6 +20,21 @@ server.get("/Api/Food", (req, res) => {
   }
 });
 
+server.get("/Api/Food/:id", (req, res) => {
+  try {
+    const filteredFood = food.filter((item) => {
+      return item.id === req.params.id;
+    });
+
+    res.send(filteredFood);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+
 mongoose
   .connect(
     process.env.MONGO_API_VERSION

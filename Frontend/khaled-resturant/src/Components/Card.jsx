@@ -9,9 +9,15 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { ShoppingBag } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AddToCart } from "../Redux/CartSlice";
 
-export default function CardItem({ city, imageLink, category, name }) {
+export default function CardItem({ city, imageLink, category, name, id, dishType, Price }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const handleAddToCart = () => {
+    dispatch(AddToCart({ id, name, category, city, imageLink, dishType, Price }));
+  };
 
   return (
     <Card
@@ -26,12 +32,13 @@ export default function CardItem({ city, imageLink, category, name }) {
     >
       <CardHeader title={name} subheader={category} />
       <CardMedia
+      className="  size-72 max-sm:size-52"
         component="img"
         sx={{objectFit:"cover"}}
         image={imageLink}
         alt={name}
         onClick={() => {
-          navigate(`/FoodArticles/${name}`);
+          navigate(`/FoodArticles/${id}`);
         }}
       />
       <CardContent>
@@ -62,6 +69,7 @@ export default function CardItem({ city, imageLink, category, name }) {
         <IconButton
           sx={{ "&:hover": { color: "#85b8e5" } }}
           aria-label="Add to Cart"
+          onClick={handleAddToCart}
         >
           <ShoppingBag />
         </IconButton>
