@@ -15,29 +15,24 @@ export default function FoodArticles() {
   // @ts-ignore
   // const {SelectedProducts} = useSelector((state) => state.CartShop)
 
-  const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(`http://localhost:3000/Api/Food/${ArticleId}`)
       .then((res) => res.json())
       .then((data) => {
-        // This code becasue you used the fetch method instead of the RTK fetch method as you fetched the whole data, but in RTK can be used for one Product
-        if (Array.isArray(data)) {
-          setFoodData(data);
-          setLoading(false);
-        } else {
-          console.error("Data is not an array:", data);
-        }
+        setFoodData([data]);
+        setLoading(false);
       });
   }, [ArticleId]);
 
   if (Loading) {
-    return <div className="lds-hourglass !flex !justify-center !items-center "></div>;
+    return (
+      <div className=" !w-full !h-screen lds-hourglass !flex !justify-center !items-center "></div>
+    );
   }
 
-  if (!Loading) {
+  if (!Loading && FoodData) {
     return (
       <Box>
         <Header />
@@ -90,7 +85,7 @@ export default function FoodArticles() {
                             className="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black hover:bg-teal-600 transition duration-100"
                             type="button"
                             onClick={() => {
-                              dispatch(AddToCart(item))
+                              dispatch(AddToCart(item));
                             }}
                           >
                             Buy now
