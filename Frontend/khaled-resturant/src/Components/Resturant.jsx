@@ -114,8 +114,8 @@ const cities2 = [
 
 export default function Resturant() {
   const navigate = useNavigate();
-  const [Image, setImage] = useState("");
-  const [Image2, setImage2] = useState("");
+  const [Image, setImage] = useState(null);
+  const [Image2, setImage2] = useState(null);
   const handleHover = (photo) => {
     setImage(photo);
   };
