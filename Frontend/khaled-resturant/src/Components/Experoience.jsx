@@ -45,7 +45,17 @@ const Text = {
   },
 };
 
-export default function Experoience({Title, Photo, Subtitle1, Subtitle2, Subtitle3, Subtitle4, PT, top, hight}) {
+export default function Experoience({
+  Title,
+  Photo,
+  Subtitle1,
+  Subtitle2,
+  Subtitle3,
+  Subtitle4,
+  PT,
+  top,
+  hight,
+}) {
   const refH1 = useRef(null);
   const isInViewH1 = useInView(refH1);
 
@@ -57,7 +67,9 @@ export default function Experoience({Title, Photo, Subtitle1, Subtitle2, Subtitl
   return (
     <div className={`!text-black w-full  ${hight} text-center`}>
       <AnimatePresence mode="wait">
-        <div className={`flex flex-col justify-center items-center md:flex-row ${PT} relative`}>
+        <div
+          className={`flex flex-col justify-center items-center md:flex-row ${PT} relative`}
+        >
           <motion.div
             ref={refH1}
             variants={h1}
@@ -88,12 +100,8 @@ export default function Experoience({Title, Photo, Subtitle1, Subtitle2, Subtitl
             className="w-full md:w-1/2 space-y-6 p-16 font-mono"
           >
             <p className="text-3xl text-start">{Subtitle1}</p>
-            <p className="text-xl text-start">
-            {Subtitle2}
-            </p>
-            <p className="text-start">
-            {Subtitle3}
-            </p>
+            <p className="text-xl text-start">{Subtitle2}</p>
+            <p className="text-start">{Subtitle3}</p>
           </motion.div>
         </div>
       </AnimatePresence>

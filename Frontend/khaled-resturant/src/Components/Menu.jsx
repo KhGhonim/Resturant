@@ -124,19 +124,20 @@ export default function UpperDrawer() {
         </Stack>
       </Stack>
 
-      <List sx={{ mt: IsScreenLarge? 8: 3 }}>
+      <List sx={{ mt: IsScreenLarge ? 8 : 3 }}>
         {MenuObjects.map((item) => (
           <ListItem
             sx={{
               textAlign: "center",
               cursor: "pointer",
               "&:hover": { color: "brown" },
-              "&:hover .MuiTypography-root ": { letterSpacing: 2,  },
-              ".MuiTypography-root ": { fontSize:IsScreenLarge? "30px" : "18px"  },
-              width:"auto",
+              "&:hover .MuiTypography-root ": { letterSpacing: 2 },
+              ".MuiTypography-root ": {
+                fontSize: IsScreenLarge ? "30px" : "18px",
+              },
+              width: "auto",
               color: "white",
               mt: 1,
-              
             }}
             key={item.text}
           >

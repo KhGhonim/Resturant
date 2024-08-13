@@ -16,8 +16,6 @@ const text = {
   },
 };
 
-
-
 export default function Map() {
   const TextHeadline = useRef(null);
   const isInViewHeadline = useInView(TextHeadline);
@@ -36,7 +34,7 @@ export default function Map() {
         WE ARE SERVING ALL AROUND THE WORLD
       </motion.p>
 
-<MapChart/>
+      <MapChart />
       <motion.div
         ref={subtitle}
         variants={text}

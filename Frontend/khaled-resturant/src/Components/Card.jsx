@@ -12,29 +12,37 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../Redux/CartSlice";
 
-export default function CardItem({ city, imageLink, category, name, id, dishType, Price }) {
+export default function CardItem({
+  city,
+  imageLink,
+  category,
+  name,
+  id,
+  dishType,
+  Price,
+}) {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handleAddToCart = () => {
-    dispatch(AddToCart({ id, name, category, city, imageLink, dishType, Price }));
+    dispatch(
+      AddToCart({ id, name, category, city, imageLink, dishType, Price })
+    );
   };
 
   return (
     <Card
-
       sx={{
-        maxWidth:350,
+        maxWidth: 350,
         color: "whitesmoke",
         ":hover": { cursor: "pointer" },
-
       }}
       className="flex justify-between flex-col bg-whitesmoke"
     >
       <CardHeader title={name} subheader={category} />
       <CardMedia
-      className="  size-72 max-sm:size-52"
+        className="  size-72 max-sm:size-52"
         component="img"
-        sx={{objectFit:"cover"}}
+        sx={{ objectFit: "cover" }}
         image={imageLink}
         alt={name}
         onClick={() => {

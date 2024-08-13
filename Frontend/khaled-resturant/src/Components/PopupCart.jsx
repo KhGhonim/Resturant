@@ -6,15 +6,14 @@ import { DecreaseQuantity, IncreaseQuantity } from "../Redux/CartSlice";
 export default function PopupCart({ HandleCartCloser }) {
   // @ts-ignore
   const { SelectedProducts } = useSelector((state) => state.CartShop);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const ProductQ = (item) => {
-    const MyProductQ =  SelectedProducts.find((itemx) => { return (
-      itemx.id === item.id )
-
-       })
-    return MyProductQ.quantity
-  }
+    const MyProductQ = SelectedProducts.find((itemx) => {
+      return itemx.id === item.id;
+    });
+    return MyProductQ.quantity;
+  };
   return (
     <Box className=" relative  ">
       <div
@@ -57,16 +56,21 @@ export default function PopupCart({ HandleCartCloser }) {
                 </div>
 
                 <div className="  flex flex-1 items-center justify-end gap-2">
-                <button onClick={() => { 
-                    dispatch(IncreaseQuantity(item))
-                   }} className="text-gray-600 transition hover:text-red-600">
+                  <button
+                    onClick={() => {
+                      dispatch(IncreaseQuantity(item));
+                    }}
+                    className="text-gray-600 transition hover:text-red-600"
+                  >
                     <Add />
                   </button>
 
-
-                  <button onClick={() => { 
-                    dispatch(DecreaseQuantity(item))
-                   }} className="text-gray-600 transition hover:text-red-600">
+                  <button
+                    onClick={() => {
+                      dispatch(DecreaseQuantity(item));
+                    }}
+                    className="text-gray-600 transition hover:text-red-600"
+                  >
                     <DeleteForeverIcon />
                   </button>
                 </div>
