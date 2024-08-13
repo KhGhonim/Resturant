@@ -1,5 +1,5 @@
+import { ArrowBack } from "@mui/icons-material";
 import { useSelector } from "react-redux";
-import { Button, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function CartItems() {
@@ -8,87 +8,71 @@ export default function CartItems() {
   const navigate = useNavigate();
   var subtotal = 0;
   return (
-    <section className=" bg-black   max-lg:mb-0   h-full   w-full !text-white ">
-      <div className="  mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 ">
-        <Button
-          onClick={() => {
-            navigate("/");
-          }}
-          variant="outlined"
-          color="warning"
-          className=" !absolute top-3  right-6  border-solid !border-red-500 "
+    <section className="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <button
+          onClick={() => navigate("/")}
+          className="mb-8 inline-flex items-center gap-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-colors duration-300 rounded-md px-5 py-2 focus:outline-none"
         >
+          <ArrowBack />
           Go Home
-        </Button>
-        <div className="mx-auto max-w-5xl border border-solid border-grey-300 max-md:border-none my-9 sm:my-3 p-3 md:p-5">
-          <header className="text-center">
-            <h1 className="text-xl font-bold sm:text-3xl">Your Cart</h1>
+        </button>
+
+        <div className="bg-gray-800 rounded-lg shadow-lg p-6">
+          <header className="mb-8 text-center">
+            <h1 className="text-3xl font-extrabold">Shopping Cart</h1>
+            <p className="text-gray-400 mt-2">
+              Review your items before checkout
+            </p>
           </header>
 
-          {SelectedProducts.map((item) => {
-            subtotal += item.Price * item.quantity - 50;
-            console.log(item);
-            return (
-              <div key={item.id} className="mt-8">
-                <ul className="space-y-4">
-                  <li className="flex items-center gap-4">
-                    <img
-                      src={item.imageLink}
-                      alt={item.name}
-                      className="  size-72 max-md:size-36 rounded-lg object-cover"
-                    />
+          <div className="space-y-6">
+            {SelectedProducts.map((item, index) => {
+              const itemTotal = item.Price * item.quantity - 50;
+              subtotal += itemTotal;
 
-                    <div>
-                      <h3 className="  text-3xl ">{item.name}</h3>
+              return (
+                <div
+                  key={item.id}
+                  className="flex items-center bg-gray-700 rounded-lg p-4 hover:bg-gray-600 transition-colors duration-200"
+                >
+                  <img
+                    src={item.imageLink}
+                    alt={item.name}
+                    className="w-20 h-20 rounded-md object-cover"
+                  />
 
-                      <dl className="mt-1 space-y-px text-sm lg:text-lg">
-                        <div>
-                          <dt className="inline">DishType : </dt>
-                          <dd className="inline">{item.dishType}</dd>
-                        </div>
-
-                        <div>
-                          <dt className="inline">City : </dt>
-                          <dd className="inline">{item.city}</dd>
-                        </div>
-                      </dl>
+                  <div className="flex-grow ml-4">
+                    <h3 className="text-lg font-semibold">{item.name}</h3>
+                    <div className="text-sm text-gray-300 mt-1">
+                      <span>{item.dishType}</span> • <span>{item.city}</span>
                     </div>
-                  </li>
-                </ul>
-                <div className="flex justify-end  pt-8">
-                  <div className="w-screen max-w-lg space-y-4">
-                    <dl className="space-y-0.5 text-lg">
-                      <div className="flex justify-between">
-                        <dt>Order</dt>
-                        <dd>£{item.Price}</dd>
-                      </div>
+                  </div>
 
-                      <div className="flex justify-between">
-                        <dt>Discount</dt>
-                        <dd>-£50</dd>
-                      </div>
-                      <div className="flex justify-between">
-                        <dt>Quantity</dt>
-                        <dd> {item.quantity}</dd>
-                      </div>
-                      <Divider className=" !mt-4   !border-dashed bg-white" />
-                      <div className="flex justify-between !text-base font-medium">
-                        <dt>Total</dt>
-                        <dd>£{subtotal}</dd>
-                      </div>
-                    </dl>
+                  <div className="text-right">
+                    <div className="text-lg font-bold">£{itemTotal}</div>
+                    <div className="text-sm text-gray-400">
+                      Qty: {item.quantity}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
 
-          <div className="flex justify-end my-5">
+          <div className="mt-8 border-t border-gray-700 pt-6">
+            <div className="flex justify-between items-center">
+              <div className="text-lg font-semibold">Subtotal</div>
+              <div className="text-2xl font-bold">£{subtotal}</div>
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-end">
             <a
               href="/"
-              className="block rounded bg-gray-700 px-5 py-3 text-sm -100 transition hover:bg-gray-600"
+              className="inline-block bg-blue-600 text-white rounded-lg px-6 py-3 text-lg transition hover:bg-blue-500 focus:outline-none"
             >
-              Checkout
+              Proceed to Checkout
             </a>
           </div>
         </div>

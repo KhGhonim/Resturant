@@ -11,7 +11,7 @@ const port = 3000;
 // Middleware
 server.use(express.json());
 dotenv.config();
-server.use(cors({ origin: "https://nusret-resturant.vercel.app" }));
+server.use(cors({ origin: "https://nusret-resturant.vercel.app" })); //http://localhost:3001
 
 // Basic Route
 server.get("/", (req, res) => {

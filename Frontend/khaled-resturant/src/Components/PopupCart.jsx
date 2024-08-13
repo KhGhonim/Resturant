@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { Add, CloseOutlined } from "@mui/icons-material";
@@ -12,97 +12,101 @@ export default function PopupCart({ HandleCartCloser }) {
     const MyProductQ = SelectedProducts.find((itemx) => {
       return itemx.id === item.id;
     });
-    return MyProductQ.quantity;
+    return MyProductQ ? MyProductQ.quantity : 0;
   };
+
+
   return (
-    <Box className=" relative  ">
+    <Box className="relative">
       <div
-        className=" absolute w-screen max-w-sm  border border-gray-600 bg-gray-200  rounded-md shadow-lg px-4 py-8 sm:px-6 lg:px-8 -translate-x-72 md:-translate-x-62 "
+        className="fixed inset-y-0 z-50 w-full max-w-sm mx-auto bg-white border border-gray-300 rounded-lg shadow-2xl px-4 py-8 sm:px-6 lg:px-8 transform sm:-translate-x-1/2 sm:translate-y-1/2"
         aria-modal="true"
         role="dialog"
+        style={{ top: '50%',  transform: 'translate(-80%, -85%)' }}
       >
-        <Button
+        <IconButton
           onClick={HandleCartCloser}
-          className="  top-0 left-72 border-solid border-red-400 w-3 h-5 transition bg-white "
-          sx={{ color: "black" }}
+          className="absolute top-3 right-3 text-gray-700 hover:text-red-500 transition"
         >
           <CloseOutlined />
-        </Button>
+        </IconButton>
 
-        {SelectedProducts.map((item, index) => (
-          <div key={item.id} className="mt-4 space-y-6 ">
+        {SelectedProducts.map((item) => (
+          <div key={item.id} className="mt-4 space-y-6">
             <ul className="space-y-4">
               <li className="flex items-center gap-4">
                 <img
                   src={item.imageLink}
                   alt={item.name}
-                  className="size-16 rounded object-cover"
+                  className="w-16 h-16 rounded-lg object-cover"
                 />
 
-                <div>
-                  <h3 className="text-sm text-gray-900">{item.name}</h3>
+                <div className="flex-1">
+                  <h3 className="text-md font-semibold text-gray-800">{item.name}</h3>
 
-                  <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                  <dl className="mt-1 text-xs text-gray-500">
                     <div>
-                      <dt className="inline">DishType:</dt>
+                      <dt className="inline font-medium">Dish Type: </dt>
                       <dd className="inline">{item.dishType}</dd>
                     </div>
 
                     <div>
-                      <dt className="inline">city:</dt>
+                      <dt className="inline font-medium">City: </dt>
                       <dd className="inline">{item.city}</dd>
                     </div>
                   </dl>
                 </div>
 
-                <div className="  flex flex-1 items-center justify-end gap-2">
-                  <button
-                    onClick={() => {
-                      dispatch(IncreaseQuantity(item));
-                    }}
-                    className="text-gray-600 transition hover:text-red-600"
+                <div className="flex items-center justify-end gap-2">
+                  <Button
+                    onClick={() => dispatch(IncreaseQuantity(item))}
+                    className="text-gray-600 hover:text-green-500 transition"
+                    size="small"
                   >
                     <Add />
-                  </button>
+                  </Button>
 
-                  <button
-                    onClick={() => {
-                      dispatch(DecreaseQuantity(item));
-                    }}
-                    className="text-gray-600 transition hover:text-red-600"
+                  <span>{ProductQ(item)}</span>
+
+                  <Button
+                    onClick={() => dispatch(DecreaseQuantity(item))}
+                    className="text-gray-600 hover:text-red-500 transition"
+                    size="small"
                   >
                     <DeleteForeverIcon />
-                  </button>
+                  </Button>
                 </div>
               </li>
             </ul>
-
-            <div className="space-y-4 text-center">
-              <a
-                href="/Cart"
-                className="block rounded border border-gray-600 px-5 py-3 text-sm text-gray-600 transition hover:ring-1 hover:ring-gray-400"
-              >
-                View my cart {ProductQ(item)}
-              </a>
-
-              <a
-                href="/Cart"
-                className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
-              >
-                Checkout
-              </a>
-            </div>
           </div>
         ))}
-        <div className="   text-center mt-2  ">
+
+        <div className="space-y-4 text-center mt-6">
+          <a
+            href="/Cart"
+            className="block w-full rounded-lg border border-gray-300 px-5 py-3 text-sm text-gray-700 bg-white hover:bg-gray-100 transition"
+          >
+            View My Cart ({SelectedProducts.length})
+          </a>
+
+          <a
+            href="/Checkout"
+            className="block w-full rounded-lg bg-blue-600 px-5 py-3 text-sm text-white hover:bg-blue-500 transition"
+          >
+            Checkout
+          </a>
+        </div>
+
+        <div className="text-center mt-4">
           <span
             onClick={HandleCartCloser}
-            className=" text-center inline-block text-sm text-gray-500 underline underline-offset-4 transition hover:text-gray-600"
+            className="inline-block text-sm text-gray-500 underline cursor-pointer hover:text-gray-600 transition"
           >
-            Continue shopping
+            Continue Shopping
           </span>
         </div>
       </div>
     </Box>
   );
+
 }

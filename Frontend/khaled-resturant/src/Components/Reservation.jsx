@@ -35,12 +35,11 @@ export default function Reservation() {
   const [FoodData, setFoodData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_BACKEND_URL}/Api/Food`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_BACKEND_URL}/Api/Food`).then((res) => { //http://localhost:3000
       setFoodData(res.data);
     });
   }, []);
 
-  console.log(FoodData);
 
   //For Buttons in ReservationHero
   const handleAlignment = (eo) => {
