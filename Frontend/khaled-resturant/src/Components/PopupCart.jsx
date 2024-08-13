@@ -17,12 +17,12 @@ export default function PopupCart({ HandleCartCloser }) {
 
 
   return (
-    <Box className="relative">
+    <Box className="relative w-full">
       <div
-        className="fixed inset-y-0 z-50 w-full max-w-sm mx-auto bg-white border border-gray-300 rounded-lg shadow-2xl px-4 py-8 sm:px-6 lg:px-8 transform sm:-translate-x-1/2 sm:translate-y-1/2"
+        className="absolute z-50  bg-white  rounded-lg shadow-2xl  max-sm:-translate-x-full  -translate-x-1/2 left-1/2  top-0 p-6 w-72 md:w-96 "
+
         aria-modal="true"
         role="dialog"
-        style={{ top: '50%',  transform: 'translate(-80%, -85%)' }}
       >
         <IconButton
           onClick={HandleCartCloser}
@@ -32,16 +32,16 @@ export default function PopupCart({ HandleCartCloser }) {
         </IconButton>
 
         {SelectedProducts.map((item) => (
-          <div key={item.id} className="mt-4 space-y-6">
-            <ul className="space-y-4">
-              <li className="flex items-center gap-4">
+          <div key={item.id} className="mt-4 space-y-6 relative   text-xs md:text-base">
+            <ul className="space-y-4 ">
+              <li className="flex items-center gap-2">
                 <img
                   src={item.imageLink}
                   alt={item.name}
                   className="w-16 h-16 rounded-lg object-cover"
                 />
 
-                <div className="flex-1">
+                <div className="flex-1  ">
                   <h3 className="text-md font-semibold text-gray-800">{item.name}</h3>
 
                   <dl className="mt-1 text-xs text-gray-500">
@@ -57,31 +57,32 @@ export default function PopupCart({ HandleCartCloser }) {
                   </dl>
                 </div>
 
-                <div className="flex items-center justify-end gap-2">
-                  <Button
+                <div className="flex items-center justify-end gap-4">
+                  <button
                     onClick={() => dispatch(IncreaseQuantity(item))}
-                    className="text-gray-600 hover:text-green-500 transition"
-                    size="small"
+                    className="text-gray-600 hover:text-green-500 transition-all duration-200"
+                  
                   >
                     <Add />
-                  </Button>
+                  </button>
 
                   <span>{ProductQ(item)}</span>
 
-                  <Button
+                  <button
                     onClick={() => dispatch(DecreaseQuantity(item))}
-                    className="text-gray-600 hover:text-red-500 transition"
-                    size="small"
+                    className="text-gray-600 hover:text-red-500 transition-all duration-200"
+                  
+                    
                   >
                     <DeleteForeverIcon />
-                  </Button>
+                  </button>
                 </div>
               </li>
             </ul>
           </div>
         ))}
 
-        <div className="space-y-4 text-center mt-6">
+        <div className="space-y-4 text-center mt-6 ">
           <a
             href="/Cart"
             className="block w-full rounded-lg border border-gray-300 px-5 py-3 text-sm text-gray-700 bg-white hover:bg-gray-100 transition"

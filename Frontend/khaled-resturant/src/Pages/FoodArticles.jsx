@@ -16,15 +16,16 @@ export default function FoodArticles() {
   // const {SelectedProducts} = useSelector((state) => state.CartShop)
 
   const dispatch = useDispatch();
+  const apiUrl = process.env.REACT_APP_API_BACKEND_UR;
 
   useEffect(() => {
-    fetch(`http://localhost:3000/Api/Food/${ArticleId}`)
+    fetch(`${apiUrl}/Api/Food/${ArticleId}`)
       .then((res) => res.json())
       .then((data) => {
         setFoodData([data]);
         setLoading(false);
       });
-  }, [ArticleId]);
+  }, [ArticleId, apiUrl]);
 
   if (Loading) {
     return (
