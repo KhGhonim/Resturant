@@ -153,7 +153,7 @@ function Dashboard() {
                 position: "absolute",
                 color: "white",
                 top: { xs: "30%", md: "35%" },
-                left: { xs: "20%", md: "35%" },
+                left: { xs: "0%", md: "32.5%" },
               }}
               className="text"
             >
