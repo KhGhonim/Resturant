@@ -40,6 +40,8 @@ export default function Reservation() {
     });
   }, []);
 
+  console.log(FoodData);
+
   //For Buttons in ReservationHero
   const handleAlignment = (eo) => {
     if (eo !== null) {
