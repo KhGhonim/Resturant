@@ -23,7 +23,7 @@ export default function PopupCart({ HandleCartCloser }) {
   };
 
   const DecreaseQuantityHandler = (item) => {
-    dispatch(IncreaseQuantity(item));
+    dispatch(DecreaseQuantity(item));
     toast.success("Deleted from the cart");
   };
 
