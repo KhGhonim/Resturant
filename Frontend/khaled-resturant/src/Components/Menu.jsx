@@ -17,35 +17,37 @@ import Logo from "../Assets/nusret.svg";
 const MenuObjects = [
   {
     text: "A PIONEERING ICON NUSRET GÖKÇE",
-    link: "https://example.com/nusret-gokce",
+    link: "#",
+
   },
   {
     text: "DISTINCTIVE VENUES WITH A SOUL",
-    link: "https://example.com/distinctive-venues",
+    link: "#",
   },
   {
     text: "SIGNATURE DISHES",
-    link: "https://example.com/signature-dishes",
+    link: "#",
   },
   {
     text: "JOIN THE DREAM TEAM",
-    link: "https://example.com/dream-team",
+    link: "#",
   },
   {
     text: "WE ARE A FAMILY",
-    link: "https://example.com/we-are-family",
+    link: "#",
   },
   {
     text: "GLOBAL PRESENCE",
-    link: "https://example.com/global-presence",
+    link: "#",
   },
   {
     text: "FOR INVESTORS",
-    link: "https://example.com/for-investors",
+    link: "#",
+
   },
   {
     text: "GALLERY",
-    link: "https://example.com/gallery",
+    link: "#",
   },
 ];
 

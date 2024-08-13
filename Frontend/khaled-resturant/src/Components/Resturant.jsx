@@ -18,46 +18,46 @@ const cities = [
   {
     name: "NEW YORK",
     photo: "https://images.otstatic.com/prod1/53682775/1/huge.jpg",
-    link: "/new-york",
+    link: "#",
   },
   {
     name: "NY MEATPACKING",
     photo:
       "https://www.tpgarchitecture.com/archidata4/tpg/assets/prev/project_1999/23907_811DC2BF-A268-8839-860E715BF404C399_lg.jpg",
-    link: "/ny-meatpacking",
-  },
+      link: "#",
+    },
   {
     name: "MIAMI",
     photo:
       "https://images.squarespace-cdn.com/content/v1/57916842bebafb827652722c/1505828007923-H2W8YIRM2HRV251TYAAL/Nusr-et%2C+The+Infamous+Turkish+Steakhouse+by+Salt+Bae+Nusret+G%C3%B6k%C3%A7e%2C+is+Finally+Coming+to+Miami",
-    link: "/miami",
-  },
+      link: "#",
+    },
   {
     name: "DALLAS",
     photo:
       "https://cloudfront-us-east-1.images.arcpublishing.com/dmn/BJEOL5TMVNHCHPTVEQT54YWZ6Q.jpg",
-    link: "/dallas",
-  },
+      link: "#",
+    },
   {
     name: "BEVERLY HILLS",
     photo: "https://images.otstatic.com/prod1/46839746/3/huge.jpg",
-    link: "/beverly-hills",
+    link: "#",
   },
   {
     name: "LAS VEGAS",
     photo: "https://www.tagvenue.com/upload/b1/e2/57634-entire-venue-room.jpg",
-    link: "/las-vegas",
+    link: "#",
   },
   {
     name: "LONDON",
     photo:
       "https://barbarossa.co.uk/wp-content/uploads/2021/02/Nusret-006.jpeg",
-    link: "/london",
-  },
+      link: "#",
+    },
   {
     name: "MYKONOS",
     photo: "https://images.otstatic.com/prod1/41973791/2/huge.jpg",
-    link: "/mykonos",
+    link: "#",
   },
 ];
 
@@ -66,50 +66,50 @@ const cities2 = [
     name: "YALIKAVAK",
     photo:
       "https://yalikavakmarina.com.tr/wp-content/uploads/2018/05/Nusret-1.jpg",
-    link: "/yalikavak",
+    link: "#",
   },
   {
     name: "SANDAL BEDESTENI",
     photo:
       "https://www.iamistanbul.com/images/yer/18006_SANDAL_BEDESTEN%C4%B0_TUR%C4%B0ZMLE.COM_.jpg",
-    link: "/sandal-bedesteni",
-  },
+      link: "#",
+    },
 
   {
     name: "BEBEK",
     photo:
       "https://media-cdn.tripadvisor.com/media/photo-s/10/fe/a4/cb/nusr-et-burger-bebek.jpg",
-    link: "/bebek",
-  },
+      link: "#",
+    },
   {
     name: "ANKARA",
     photo: "https://www.meyhankoli.com/img/cropped/nusr-et-steakhouse-4658.jpg",
-    link: "/ankara",
+    link: "#",
   },
   {
     name: "RIYADH",
     photo:
       "https://www.arabnews.com/sites/default/files/styles/n_670_395/public/2021/11/24/2931736-1346313893.png?itok=lX0VO0Fk",
-    link: "/riyadh",
-  },
+      link: "#",
+    },
   {
     name: "ABU DHABI",
     photo:
       "https://tricon.co.uk/wp-content/uploads/2017/04/Nusr-Et-Tricon-Restauant-3-2.jpg",
-    link: "/abu-dhabi",
-  },
+      link: "#",
+    },
   {
     name: "DUBAI",
     photo:
       "https://wearebishopdesign.com/application/files/cache/16c7a0ce789885ddc6ec954d3858b50c.jpg",
-    link: "/dubai",
-  },
+      link: "#",
+    },
   {
     name: "DOHA",
     photo:
       "https://ucarecdn.com/dd9b7731-75b5-4362-914b-834455d4f5b0/-/scale_crop/870x500/",
-    link: "/doha",
-  },
+      link: "#",
+    },
 ];
 
 export default function Resturant() {
