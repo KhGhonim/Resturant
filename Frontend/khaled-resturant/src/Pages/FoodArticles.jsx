@@ -16,7 +16,7 @@ export default function FoodArticles() {
   // const {SelectedProducts} = useSelector((state) => state.CartShop)
 
   const dispatch = useDispatch();
-  const apiUrl = process.env.REACT_APP_API_BACKEND_UR;
+  const apiUrl = process.env.REACT_APP_API_BACKEND_URL;
 
   useEffect(() => {
     fetch(`${apiUrl}/Api/Food/${ArticleId}`)
@@ -25,7 +25,7 @@ export default function FoodArticles() {
         setFoodData([data]);
         setLoading(false);
       });
-  }, [ArticleId, apiUrl]);
+  }, [ArticleId]);
 
   if (Loading) {
     return (
