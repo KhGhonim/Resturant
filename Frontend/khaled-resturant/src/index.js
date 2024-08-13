@@ -15,6 +15,7 @@ import FoodArticles from "./Pages/FoodArticles";
 import { Provider } from 'react-redux'
 import { store } from './Redux/store'
 import CartItems from "./Components/CartItems";
+import Checkout from "./Pages/Checkout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route index element={<Dashboard />} />
       <Route path="/FoodArticles/:ArticleId" element={<FoodArticles />} />
       <Route path="/Cart" element={<CartItems />} />
+      <Route path="/Checkout" element={<Checkout />} />
       {/* ... etc. */}
     </Route>
   )

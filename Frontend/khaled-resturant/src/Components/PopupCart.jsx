@@ -4,6 +4,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { Add, CloseOutlined } from "@mui/icons-material";
 import { DecreaseQuantity, IncreaseQuantity } from "../Redux/CartSlice";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function PopupCart({ HandleCartCloser }) {
   // @ts-ignore
@@ -99,19 +100,19 @@ export default function PopupCart({ HandleCartCloser }) {
         ))}
 
         <div className="space-y-4 text-center mt-6 ">
-          <a
-            href="/Cart"
+          <Link
+            to="/Cart"
             className="block w-full rounded-lg border border-gray-300 px-5 py-3 text-sm text-gray-700 bg-white hover:bg-gray-100 transition"
           >
             View My Cart ({SelectedProducts.length})
-          </a>
+          </Link>
 
-          <a
-            href="/Checkout"
+          <Link
+            to="/Checkout"
             className="block w-full rounded-lg bg-blue-600 px-5 py-3 text-sm text-white hover:bg-blue-500 transition"
           >
             Checkout
-          </a>
+          </Link>
         </div>
 
         <div className="text-center mt-4">
