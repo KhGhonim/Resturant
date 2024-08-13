@@ -3,6 +3,7 @@ import GroceryStore from "../Assets/grocery store.png";
 import Newspaper from "../Assets/download.png";
 import PajmaHouse from "../Assets/Pijama evi.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 const MyProjects = [
   {
     src: Portfolio,
@@ -34,19 +35,24 @@ export default function FollowUS() {
           See My Other Projects & More...
         </h2>
         <h1 className="text-center text-4xl font-extrabold mb-6">
-          I'M KHALED GHONIM
+          I'M KHALED GHONIM!
         </h1>
         <div className="flex flex-col md:flex-row gap-3 justify-center items-center space-x-4 ">
           {MyProjects.map((project, index) => (
-            <Link key={index} className="relative " to={""}>
-              <img
-                src={project.src}
-                alt={project.alt}
-                className="rounded-lg shadow-lg w-80 h-80 object-cover"
-              />
-              <span className="absolute top-2 left-2 bg-red-600 animate-pulse text-white text-xs px-2 py-1 rounded">
-                @KG
-              </span>
+            <Link key={index} className="relative " to={project.link}>
+              <motion.div
+                whileHover={{ scale: 1.1, transition: { duration: 0.4 } }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <img
+                  src={project.src}
+                  alt={project.alt}
+                  className="rounded-lg shadow-lg w-80 h-80 object-cover"
+                />
+                <span className="absolute top-2 left-2 bg-red-600 animate-pulse text-white text-xs px-2 py-1 rounded">
+                  @KG
+                </span>
+              </motion.div>
             </Link>
           ))}
         </div>

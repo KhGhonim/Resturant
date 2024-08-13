@@ -2,39 +2,42 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import SteakImg from "../Assets/1.png";
 import SteakImgWellDone from "../Assets/2.png";
 import { useRef } from "react";
+
 export default function Steak() {
   const SteakSection = useRef(null);
-  // Use the scroll hook to get the scrollY progress (0 to 1)
   const { scrollYProgress } = useScroll({
     target: SteakSection,
-    offset: ["end end", "end start"],
+    offset: ["start end", "end start"]
   });
 
-  // Use transform to map scrollYProgress to background color change
-  const backgroundColor = useTransform(
+
+  const x = useTransform(scrollYProgress, [0, 0.5, 1], ["100%", "50%",  "0%"]);
+
+
+  // Define the image position (fixed when in view, relative otherwise)
+  const position = useTransform(
     scrollYProgress,
-    [0, 1],
-    ["#ffffff", "#000000"]
+    [0, 0.1, 0.9, 1],
+    ["relative", "fixed", "fixed", "relative"]
   );
 
-  // Use transform to map scrollYProgress to background x-axis movement
-  const x = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
   return (
     <motion.div
+  
       ref={SteakSection}
       className="w-full h-[200dvh] overflow-hidden relative"
-      style={{
-        backgroundColor: backgroundColor,
-      }}
     >
-      <div className=" flex flex-col justify-center items-center z-50">
-        <div className=" border-2 border-red-200">
-          <div className=" w-full h-full">
-            <img src={SteakImg} alt="Steak" className="w-full h-full" />
-            {/* <img src={SteakImgWellDone} alt="Steak" className="w-full h-full" /> */}
-          </div>
-        </div>
+      <motion.div style={{ x }}  className="absolute inset-0 bg-black text-white"></motion.div>
+      <motion.div style={{ position }}
+        className=" top-[10vh] flex flex-col justify-center items-center "
+      >
+        <motion.div
+        
+          className=" w-full h-full flex justify-center items-center border-2 border-red-500"
+        >
+          <img src={SteakImg} alt="Steak" className="w-1/2 h-full" />
+        </motion.div>
 
         <div className="w-full h-1/2">
           <div>
@@ -54,7 +57,7 @@ export default function Steak() {
             </h4>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
