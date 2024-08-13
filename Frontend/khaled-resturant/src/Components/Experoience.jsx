@@ -97,11 +97,11 @@ export default function Experoience({
             variants={Text}
             initial="hidden"
             animate={isInViewText ? "visible" : "hidden"}
-            className="w-full md:w-1/2 space-y-6 p-16 font-mono"
+            className="w-full md:w-1/2 space-y-6 p-10 font-mono"
           >
-            <p className="text-3xl text-start">{Subtitle1}</p>
-            <p className="text-xl text-start">{Subtitle2}</p>
-            <p className="text-start">{Subtitle3}</p>
+            <p className="text-3xl text-center">{Subtitle1}</p>
+            <p className="text-lg text-start">{Subtitle2}</p>
+            <p className="text-start ">{Subtitle3}</p>
           </motion.div>
         </div>
       </AnimatePresence>

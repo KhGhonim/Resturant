@@ -67,7 +67,7 @@ export default function Dining({
             className="w-full md:w-1/2 flex flex-col p-20 items-center space-y-5 md:items-start md:space-y-10 "
           >
             <h4 className="text-xl md:text-3xl text-[#7E663A]">{Gallary1}</h4>
-            <h1 className="text-2xl md:text-7xl font-bold relative group">{Gallary2}
+            <h1 className="text-2xl md:text-7xl font-bold relative group max-sm:text-center">{Gallary2}
 
             <span className="absolute left-0 bottom-0 w-full h-0.5 bg-[#7E663A] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 mt-3"></span>
 
