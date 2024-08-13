@@ -243,7 +243,7 @@ function Dashboard() {
           Subtitle3={`From its starters such as Beef Carpaccio, Steak Tartar, and more to Tomahawk, Toscano, Saslık, and other main flavors prepared on the char-grill, the heart of its cuisine, Nusr-Et invites its guests on an extraordinary gastronomy journey.`}
           Subtitle4={undefined}
           PT={"pt-0"}
-          top={"top-16"}
+          top={"top-10"}
           hight={"h-full"}
         />
         <Marque
@@ -257,7 +257,7 @@ function Dashboard() {
           Gallary2={`All Gallary`}
           Gallary3={undefined}
           hight={`h-[150dvh]`}
-          py={`py-32 md:py-64`}
+          py={`py-28 md:py-56`}
           cities={cities2}
         />
 
