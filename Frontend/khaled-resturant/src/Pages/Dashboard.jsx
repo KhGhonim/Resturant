@@ -261,7 +261,7 @@ function Dashboard() {
           cities={cities2}
         />
 
-        <FollowUS/>
+        <FollowUS />
       </div>
     </div>
   );

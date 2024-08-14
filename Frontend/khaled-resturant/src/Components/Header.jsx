@@ -25,6 +25,7 @@ export default function Header() {
   const IsScreenLarge = useMediaQuery("(min-width:950px)");
   const [Scrolled, setScrolled] = useState("absolute");
   const [Close, setClose] = useState(false);
+  const [HeaderColor, setHeaderColor] = useState("transparent");
 
   const HandleCartCloser = () => {
     setClose(!Close);
@@ -38,8 +39,10 @@ export default function Header() {
 
       if (scrollPosition > 70) {
         setScrolled("fixed");
+        setHeaderColor("black");
       } else {
         setScrolled("absolute");
+        setHeaderColor("transparent");
       }
     };
 
@@ -55,14 +58,14 @@ export default function Header() {
     <Box
       className="HeaderContainer"
       sx={{
-        bgcolor: "transparent",
+        bgcolor: HeaderColor,
         top: 0,
         left: 0,
         zIndex: 999,
-        width: "98%",
+        width: "100%",
         justifyContent: "space-between",
-        alignItems: { xs: "center", sm: "inherit" },
-        p: 1,
+        alignItems: { xs: "center", sm: "unset" },
+        p: 3,
         display: "flex",
         position: Scrolled,
         transition: "all 0.5s ease-in-out",
