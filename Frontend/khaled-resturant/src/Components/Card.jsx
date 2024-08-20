@@ -3,6 +3,7 @@ import { ShoppingBag } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../Redux/CartSlice";
+import { toast } from "react-toastify";
 
 export default function CardItem({
   city,
@@ -19,8 +20,8 @@ export default function CardItem({
     dispatch(
       AddToCart({ id, name, category, city, imageLink, dishType, Price })
     );
+    toast.success("Added to cart");
   };
-
   return (
     <div className="max-w-[350px] bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 !overflow-hidden">
       <div className="p-6">
@@ -43,12 +44,7 @@ export default function CardItem({
         </p>
       </div>
       <div className="flex items-center justify-between p-6 bg-gray-800">
-        <button
-          className="hover:text-red-500 transition duration-300"
-          aria-label="Add to Favorites"
-        >
-          <FavoriteIcon />
-        </button>
+        <p className="text-2xl font-bold text-white">${Price}</p>
         <p className="text-xs text-gray-400">
           Available at <span className="text-white">{city}</span>
         </p>
