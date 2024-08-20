@@ -20,6 +20,7 @@ import ReservationHero from "./ReservationHero";
 import Products from "./Products";
 import CardItem from "./Card";
 import axios from "axios";
+import Loading from "./Loading";
 
 export default function Reservation() {
   const [state, setState] = useState({
@@ -33,13 +34,17 @@ export default function Reservation() {
   const [InputValue, setInputValue] = useState("");
   const [RadioValue, setRadioValue] = useState(null);
   const [FoodData, setFoodData] = useState([]);
-
+  const [Isloading, setIsloading] = useState(false);
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_BACKEND_URL}/Api/Food`).then((res) => { //http://localhost:3000
-      setFoodData(res.data);
-    });
+    setIsloading(true);
+    axios
+      .get(`${process.env.REACT_APP_API_BACKEND_URL}/Api/Food`)
+      .then((res) => {
+        //http://localhost:3000
+        setFoodData(res.data);
+      });
+    setIsloading(false);
   }, []);
-
 
   //For Buttons in ReservationHero
   const handleAlignment = (eo) => {
@@ -86,15 +91,20 @@ export default function Reservation() {
       );
     }
 
-    return Food.map(({ name, category, imageLink, city, id, dishType, Price }) => (
-      <CardItem
-        city={city}
-        imageLink={imageLink}
-        category={category}
-        name={name}
-        key={Math.random()}
-        id={id} dishType={dishType} Price={Price}     />
-    ));
+    return Food.map(
+      ({ name, category, imageLink, city, id, dishType, Price }) => (
+        <CardItem
+          city={city}
+          imageLink={imageLink}
+          category={category}
+          name={name}
+          key={Math.random()}
+          id={id}
+          dishType={dishType}
+          Price={Price}
+        />
+      )
+    );
   };
 
   const result = FiltiringProducts();
@@ -209,7 +219,7 @@ export default function Reservation() {
           handlechange={handlechange}
         />
         <Container>
-          <Products result={result} />
+          {Isloading ? <Loading /> : <Products result={result} />}
         </Container>
       </Stack>
     </Box>
