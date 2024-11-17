@@ -1,4 +1,3 @@
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { ShoppingBag } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -23,7 +22,12 @@ export default function CardItem({
     toast.success("Added to cart");
   };
   return (
-    <div className="max-w-[350px] bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 !overflow-hidden">
+    <div
+      onClick={() => {
+        navigate(`/FoodArticles/${id}`);
+      }}
+      className="max-w-[350px] bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 !overflow-hidden"
+    >
       <div className="p-6">
         <h2 className="text-2xl font-bold text-white mb-2">{name}</h2>
         <p className="text-sm text-gray-400">{category}</p>
@@ -32,9 +36,6 @@ export default function CardItem({
         className="w-full h-64 object-cover transition-transform duration-300 transform hover:scale-105"
         src={imageLink}
         alt={name}
-        onClick={() => {
-          navigate(`/FoodArticles/${id}`);
-        }}
       />
       <div className="p-6 text-gray-300">
         <p>

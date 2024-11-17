@@ -30,6 +30,7 @@ export default function Header() {
   const HandleCartCloser = () => {
     setClose(!Close);
   };
+
   // @ts-ignore
   const { SelectedProducts } = useSelector((state) => state.CartShop);
 

@@ -35,16 +35,21 @@ export default function Reservation() {
   const [RadioValue, setRadioValue] = useState(null);
   const [FoodData, setFoodData] = useState([]);
   const [Isloading, setIsloading] = useState(false);
+  
   useEffect(() => {
     setIsloading(true);
     axios
       .get(`${process.env.REACT_APP_API_BACKEND_URL}/Api/Food`)
       .then((res) => {
-        //http://localhost:3000
+        //${process.env.REACT_APP_API_BACKEND_URL}
         setFoodData(res.data);
       });
     setIsloading(false);
   }, []);
+
+
+
+  
 
   //For Buttons in ReservationHero
   const handleAlignment = (eo) => {
@@ -102,6 +107,7 @@ export default function Reservation() {
           id={id}
           dishType={dishType}
           Price={Price}
+          
         />
       )
     );

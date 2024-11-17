@@ -10,21 +10,29 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./styles.css";
+// @ts-ignore
 import banner1 from "../Assets/banner1.jpg";
+// @ts-ignore
 import banner2 from "../Assets/banner2.jpg";
+// @ts-ignore
 import banner3 from "../Assets/banner3.jpg";
+// @ts-ignore
 import banner4 from "../Assets/banner4.jpg";
+// @ts-ignore
 import banner5 from "../Assets/banner5.jpg";
+// @ts-ignore
 import Experience from "../Assets/experiences.jpg";
+// @ts-ignore
 import newYorkSteak from "../Assets/newYorkSteak.jpg";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Experoience from "../Components/Experoience";
 import Map from "../Components/Map";
+// @ts-ignore
 import Steak from "../Components/Steak";
 import Marque from "../Components/Marque";
 import Dining from "../Components/Dining";
-import FollowUS from "Components/FollowUS";
+import FollowUS from "../Components/FollowUS";
 
 const cities1 = [
   {

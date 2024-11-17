@@ -55,6 +55,7 @@ export default function ReservationHero({
   handleAlignment,
   InputValue,
   handlechange,
+  
 }) {
 
   return (
