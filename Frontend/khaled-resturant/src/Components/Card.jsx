@@ -26,7 +26,7 @@ export default function CardItem({
       onClick={() => {
         navigate(`/FoodArticles/${id}`);
       }}
-      className="max-w-[350px] bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 !overflow-hidden"
+      className="max-w-[350px] cursor-pointer bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 !overflow-hidden"
     >
       <div className="p-6">
         <h2 className="text-2xl font-bold text-white mb-2">{name}</h2>

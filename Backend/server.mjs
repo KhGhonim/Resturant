@@ -13,6 +13,7 @@ server.use(express.json());
 dotenv.config();
 server.use(cors({ origin: "*" }));
 
+
 // Basic Route
 server.get("/", (req, res) => {
   res.send("Welcome to the database server");
