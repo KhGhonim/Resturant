@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import ConsistOfDB from "./Components/ConsistOfDB/ConsistOfDB";
 
 function App() {
   const [mode] = useState(
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <ConsistOfDB />
         <Outlet />
         <ToastContainer />
       </ThemeProvider>

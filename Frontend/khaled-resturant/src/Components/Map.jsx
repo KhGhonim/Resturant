@@ -29,7 +29,7 @@ export default function Map() {
         variants={text}
         initial="hidden"
         animate={isInViewHeadline ? "visible" : "hidden"}
-        className="text-xl md:text-5xl text-white absolute left-1/4 top-20  -translate-x-1/2  z-50"
+        className="text-xl md:text-5xl text-white absolute left-1/4 top-20  -translate-x-1/2  z-40"
       >
         WE ARE SERVING ALL AROUND THE WORLD
       </motion.p>

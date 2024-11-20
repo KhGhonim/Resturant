@@ -75,7 +75,7 @@ export default function Experoience({
             variants={h1}
             initial="hidden"
             animate={isInViewH1 ? "visible" : "hidden"}
-            className={`text-3xl md:text-7xl text-black font-extrabold absolute top-36 md:w-[1000px] z-50 ${top}`}
+            className={`text-3xl md:text-7xl text-black font-extrabold absolute top-36 md:w-[1000px] z-40 ${top}`}
           >
             <motion.h1> {Title}</motion.h1>
           </motion.div>{" "}
