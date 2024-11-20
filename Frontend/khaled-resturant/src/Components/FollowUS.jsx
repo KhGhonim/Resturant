@@ -8,17 +8,17 @@ const MyProjects = [
   {
     src: Portfolio,
     alt: "Portfolio",
-    link: "https://khaled-ghonim-portfolio.vercel.app/Developer",
+    link: "https://dev.khaledghonim.com/",
   },
   {
     src: Newspaper,
     alt: "Newspaper",
-    link: "https://news-paper-ruby.vercel.app/",
+    link: "https://news-paper-ruby.vercel.app",
   },
   {
     src: GroceryStore,
     alt: "GroceryStore",
-    link: "https://grocery-store-beta.vercel.app/",
+    link: "https://grocery-store-beta.vercel.app",
   },
   {
     src: PajmaHouse,
